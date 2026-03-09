@@ -1,0 +1,359 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Relevantz.ExitManagement.Api.csproj": {}
+  },
+  "projects": {
+    "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Relevantz.ExitManagement.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Relevantz.ExitManagement.Api.csproj",
+        "projectName": "Relevantz.ExitManagement.Api",
+        "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Relevantz.ExitManagement.Api.csproj",
+        "packagesPath": "C:\\Users\\arul.vincent\\.nuget\\packages\\",
+        "outputPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\arul.vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj": {
+                "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj"
+              },
+              "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\Relevantz.ExitManagement.Core.csproj": {
+                "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\Relevantz.ExitManagement.Core.csproj"
+              },
+              "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Relevantz.ExitManagement.Data.csproj": {
+                "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Relevantz.ExitManagement.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.2.2, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj",
+        "projectName": "Relevantz.ExitManagement.Common",
+        "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj",
+        "packagesPath": "C:\\Users\\arul.vincent\\.nuget\\packages\\",
+        "outputPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\arul.vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\Relevantz.ExitManagement.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\Relevantz.ExitManagement.Core.csproj",
+        "projectName": "Relevantz.ExitManagement.Core",
+        "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\Relevantz.ExitManagement.Core.csproj",
+        "packagesPath": "C:\\Users\\arul.vincent\\.nuget\\packages\\",
+        "outputPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\arul.vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj": {
+                "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj"
+              },
+              "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Relevantz.ExitManagement.Data.csproj": {
+                "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Relevantz.ExitManagement.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Relevantz.ExitManagement.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Relevantz.ExitManagement.Data.csproj",
+        "projectName": "Relevantz.ExitManagement.Data",
+        "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Relevantz.ExitManagement.Data.csproj",
+        "packagesPath": "C:\\Users\\arul.vincent\\.nuget\\packages\\",
+        "outputPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\arul.vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj": {
+                "projectPath": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Relevantz.ExitManagement.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

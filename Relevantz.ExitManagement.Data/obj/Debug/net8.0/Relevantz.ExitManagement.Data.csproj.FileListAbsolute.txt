@@ -1,0 +1,17 @@
+D:\MVP\Backend\Relevantz.ExitManagement.Data\bin\Debug\net8.0\Relevantz.ExitManagement.Data.deps.json
+D:\MVP\Backend\Relevantz.ExitManagement.Data\bin\Debug\net8.0\Relevantz.ExitManagement.Data.runtimeconfig.json
+D:\MVP\Backend\Relevantz.ExitManagement.Data\bin\Debug\net8.0\Relevantz.ExitManagement.Data.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Data\bin\Debug\net8.0\Relevantz.ExitManagement.Data.pdb
+D:\MVP\Backend\Relevantz.ExitManagement.Data\bin\Debug\net8.0\Relevantz.ExitManagement.Common.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Data\bin\Debug\net8.0\Relevantz.ExitManagement.Common.pdb
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.csproj.AssemblyReference.cache
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.AssemblyInfoInputs.cache
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.AssemblyInfo.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.csproj.CoreCompileInputs.cache
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevant.5A506521.Up2Date
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\refint\Relevantz.ExitManagement.Data.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.pdb
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\Relevantz.ExitManagement.Data.genruntimeconfig.cache
+D:\MVP\Backend\Relevantz.ExitManagement.Data\obj\Debug\net8.0\ref\Relevantz.ExitManagement.Data.dll

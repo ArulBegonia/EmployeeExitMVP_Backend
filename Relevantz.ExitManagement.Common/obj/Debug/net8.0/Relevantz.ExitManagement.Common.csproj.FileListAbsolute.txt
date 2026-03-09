@@ -1,0 +1,12 @@
+D:\MVP\Backend\Relevantz.ExitManagement.Common\bin\Debug\net8.0\Relevantz.ExitManagement.Common.deps.json
+D:\MVP\Backend\Relevantz.ExitManagement.Common\bin\Debug\net8.0\Relevantz.ExitManagement.Common.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Common\bin\Debug\net8.0\Relevantz.ExitManagement.Common.pdb
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.csproj.AssemblyReference.cache
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.AssemblyInfoInputs.cache
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.AssemblyInfo.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.csproj.CoreCompileInputs.cache
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\refint\Relevantz.ExitManagement.Common.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.pdb
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\ref\Relevantz.ExitManagement.Common.dll
