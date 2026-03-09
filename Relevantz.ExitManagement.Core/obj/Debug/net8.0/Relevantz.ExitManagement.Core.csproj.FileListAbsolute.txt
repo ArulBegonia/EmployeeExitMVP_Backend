@@ -34,3 +34,4 @@ D:\MVP\Backend\Relevantz.ExitManagement.Core\obj\Debug\net8.0\Relevantz.ExitMana
 D:\MVP\Backend\Relevantz.ExitManagement.Core\obj\Debug\net8.0\refint\Relevantz.ExitManagement.Core.dll
 D:\MVP\Backend\Relevantz.ExitManagement.Core\obj\Debug\net8.0\Relevantz.ExitManagement.Core.pdb
 D:\MVP\Backend\Relevantz.ExitManagement.Core\obj\Debug\net8.0\ref\Relevantz.ExitManagement.Core.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Core\obj\Debug\net8.0\Relevantz.ExitManagement.Core.sourcelink.json

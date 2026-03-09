@@ -1,0 +1,376 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.1"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1773033799000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "EmployeeExitMVP"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "D:\\MVP\\Backend"
+    },
+    {
+      "key": "sonar.sources",
+      "value": "D:\\MVP\\Backend\\.config\\dotnet-tools.json,D:\\MVP\\Backend\\global.json"
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "89220A9A-1B7E-47C3-A3B5-0B4748799669,030BF6EE-2E47-4B85-A41A-0BE45E721268,C3C36D38-6159-46C3-A511-B403EA528100,F5E08C75-1783-43BE-A09F-E3C8786E2DBE,EF13226C-29CD-4FA5-94CD-0A62E8ED9703,20C8EB25-1379-4BB6-BAB5-821614C5455C,46F404CF-A445-4AEA-B460-CB80A9E9E756,77BD0C73-1DDB-4EF5-B60A-8B6314355071"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.projectKey",
+      "value": "EmployeeExitMVP:89220A9A-1B7E-47C3-A3B5-0B4748799669"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Common"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod0"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.sources",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\ApiResponse.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\AssestDeclarationDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\ClearanceItemResponseDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\ExitAnalyticsResponseDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\ExitRequestSummaryDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\ExitStatusResponseDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\HrApprovalRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\KtTaskDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\KtTaskResponseDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\LoginRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\ManagerApprovalRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\NotificationResponseDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\RehireEligibilityRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\SettlementApprovalRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\SubmitResignationRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\UpdateClearanceItemDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\UpdateClearanceRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\UpdateKtRequestDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\DTOs\\UpdateKtTaskStatusDto.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\AssetDeclaration.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\AuditLog.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\ClearanceItem.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\Employee.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\ExitApproval.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\ExitRequest.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\KtTask.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\Notification.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Entities\\Role.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Enums\\ApprovalStatus.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Enums\\ClearanceStatus.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Enums\\ExitRiskLevel.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Enums\\ExitStatus.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Enums\\RehireDecision.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Enums\\ResignationReason.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Exceptions\\NotFoundException.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\Validators\\SubmitResignationRequestValidator.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\obj\\Relevantz.ExitManagement.Common.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Common.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Common.sourcelink.json"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\0"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\0\\Issues.json"
+    },
+    {
+      "key": "89220A9A-1B7E-47C3-A3B5-0B4748799669.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\0\\Telemetry.json"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.projectKey",
+      "value": "EmployeeExitMVP:030BF6EE-2E47-4B85-A41A-0BE45E721268"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Common.Tests"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common.Tests"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod1"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.tests",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Common.Tests\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common.Tests\\obj\\Relevantz.ExitManagement.Common.Tests.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Common.Tests.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Common.Tests.runtimeconfig.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common.Tests\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Common.Tests.sourcelink.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Common.Tests\\UnitTest1.cs"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\1"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\1\\Issues.json"
+    },
+    {
+      "key": "030BF6EE-2E47-4B85-A41A-0BE45E721268.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\1\\Telemetry.json"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.projectKey",
+      "value": "EmployeeExitMVP:C3C36D38-6159-46C3-A511-B403EA528100"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Data"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod2"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.sources",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\obj\\Relevantz.ExitManagement.Data.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Data.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Data.runtimeconfig.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Data.sourcelink.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\DBContexts\\DbInitializer.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\DBContexts\\ExitManagementDbContext.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\IRepository\\IExitRequestRepository.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Migrations\\20260305070115_InitialCreate.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Migrations\\20260305070115_InitialCreate.Designer.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Migrations\\ExitManagementDbContextModelSnapshot.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data\\Repository\\ExitRequestRepository.cs"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\2"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\2\\Issues.json"
+    },
+    {
+      "key": "C3C36D38-6159-46C3-A511-B403EA528100.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\2\\Telemetry.json"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.projectKey",
+      "value": "EmployeeExitMVP:F5E08C75-1783-43BE-A09F-E3C8786E2DBE"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Data.Tests"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data.Tests"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod3"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.tests",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Data.Tests\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data.Tests\\obj\\Relevantz.ExitManagement.Data.Tests.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Data.Tests.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Data.Tests.runtimeconfig.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data.Tests\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Data.Tests.sourcelink.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Data.Tests\\UnitTest1.cs"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\3"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\3\\Issues.json"
+    },
+    {
+      "key": "F5E08C75-1783-43BE-A09F-E3C8786E2DBE.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\3\\Telemetry.json"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.projectKey",
+      "value": "EmployeeExitMVP:EF13226C-29CD-4FA5-94CD-0A62E8ED9703"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Core"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod4"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.sources",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\obj\\Relevantz.ExitManagement.Core.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Core.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Core.sourcelink.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\IService\\IDocumentService.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\IService\\IExitService.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\Service\\DocumentService.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core\\Service\\ExitService.cs"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\4"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\4\\Issues.json"
+    },
+    {
+      "key": "EF13226C-29CD-4FA5-94CD-0A62E8ED9703.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\4\\Telemetry.json"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.projectKey",
+      "value": "EmployeeExitMVP:20C8EB25-1379-4BB6-BAB5-821614C5455C"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Core.Tests"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core.Tests"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod5"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.tests",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Core.Tests\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core.Tests\\obj\\Relevantz.ExitManagement.Core.Tests.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Core.Tests.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Core.Tests.runtimeconfig.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core.Tests\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Core.Tests.sourcelink.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Core.Tests\\UnitTest1.cs"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\5"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\5\\Issues.json"
+    },
+    {
+      "key": "20C8EB25-1379-4BB6-BAB5-821614C5455C.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\5\\Telemetry.json"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.projectKey",
+      "value": "EmployeeExitMVP:46F404CF-A445-4AEA-B460-CB80A9E9E756"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Api"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod6"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.sources",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\appsettings.Development.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\appsettings.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\Relevantz.ExitManagement.Api.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Properties\\launchSettings.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\bin\\Debug\\net8.0\\appsettings.Development.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\bin\\Debug\\net8.0\\appsettings.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Api.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Api.runtimeconfig.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Api.sourcelink.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\Debug\\net8.0\\staticwebassets.build.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Controllers\\AuthController.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Controllers\\ExitController.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Controllers\\NotificationController.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Middleware\\GlobalExceptionMiddleware.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Program.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Api.GlobalUsings.g.cs,\"D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Api.AssemblyInfo.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Api.MvcApplicationPartsAssemblyInfo.cs,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Assets\\relevantz_logo.png,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api\\Relevantz.ExitManagement.Api.http"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\6"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\6\\Issues.json"
+    },
+    {
+      "key": "46F404CF-A445-4AEA-B460-CB80A9E9E756.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\6\\Telemetry.json"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.projectKey",
+      "value": "EmployeeExitMVP:77BD0C73-1DDB-4EF5-B60A-8B6314355071"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.projectName",
+      "value": "Relevantz.ExitManagement.Api.Tests"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.projectBaseDir",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.working.directory",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\.sonar\\mod7"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.tests",
+      "value": "D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\obj\\project.assets.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\obj\\Relevantz.ExitManagement.Api.Tests.csproj.nuget.dgspec.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\bin\\Debug\\net8.0\\appsettings.Development.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\bin\\Debug\\net8.0\\appsettings.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Api.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Api.runtimeconfig.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Api.Tests.deps.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\bin\\Debug\\net8.0\\Relevantz.ExitManagement.Api.Tests.runtimeconfig.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\obj\\Debug\\net8.0\\Relevantz.ExitManagement.Api.Tests.sourcelink.json,D:\\MVP\\Backend\\Relevantz.ExitManagement.Api.Tests\\UnitTest1.cs"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.cs.analyzer.projectOutPaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\7"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.cs.roslyn.reportFilePaths",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\7\\Issues.json"
+    },
+    {
+      "key": "77BD0C73-1DDB-4EF5-B60A-8B6314355071.sonar.cs.scanner.telemetry",
+      "value": "D:\\MVP\\Backend\\.sonarqube\\out\\7\\Telemetry.json"
+    },
+    {
+      "key": "sonar.token",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

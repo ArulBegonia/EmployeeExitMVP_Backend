@@ -1,0 +1,7 @@
+﻿D:\MVP\Backend\Relevantz.ExitManagement.Data\DBContexts\DbInitializer.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Data\DBContexts\ExitManagementDbContext.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Data\IRepository\IExitRequestRepository.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Data\Migrations\20260305070115_InitialCreate.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Data\Migrations\20260305070115_InitialCreate.Designer.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Data\Migrations\ExitManagementDbContextModelSnapshot.cs
+D:\MVP\Backend\Relevantz.ExitManagement.Data\Repository\ExitRequestRepository.cs

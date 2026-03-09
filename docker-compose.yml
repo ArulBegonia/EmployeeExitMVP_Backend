@@ -1,0 +1,47 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: exit-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: exitdb
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping --silent --protocol=TCP -h localhost -uroot -proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - exit-network
+
+
+  exit-api:
+    build: .
+    container_name: exit-management-api
+    restart: always
+    ports:
+      - "5100:5100"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5100
+      - ConnectionStrings__DefaultConnection=Server=mysql;Database=exitdb;User=root;Password=root;
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/Logs
+    networks:
+      - exit-network
+
+
+volumes:
+  mysql_data:
+
+networks:
+  exit-network:
+    driver: bridge

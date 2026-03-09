@@ -10,3 +10,4 @@ D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitMa
 D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\refint\Relevantz.ExitManagement.Common.dll
 D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.pdb
 D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\ref\Relevantz.ExitManagement.Common.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Common\obj\Debug\net8.0\Relevantz.ExitManagement.Common.sourcelink.json

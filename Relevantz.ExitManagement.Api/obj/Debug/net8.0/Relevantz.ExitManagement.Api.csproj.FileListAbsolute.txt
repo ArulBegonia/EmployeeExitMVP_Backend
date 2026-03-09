@@ -178,3 +178,4 @@ D:\MVP\Backend\Relevantz.ExitManagement.Api\obj\Debug\net8.0\refint\Relevantz.Ex
 D:\MVP\Backend\Relevantz.ExitManagement.Api\obj\Debug\net8.0\Relevantz.ExitManagement.Api.pdb
 D:\MVP\Backend\Relevantz.ExitManagement.Api\obj\Debug\net8.0\Relevantz.ExitManagement.Api.genruntimeconfig.cache
 D:\MVP\Backend\Relevantz.ExitManagement.Api\obj\Debug\net8.0\ref\Relevantz.ExitManagement.Api.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Api\obj\Debug\net8.0\Relevantz.ExitManagement.Api.sourcelink.json

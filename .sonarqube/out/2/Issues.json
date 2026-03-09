@@ -1,0 +1,384 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.25569.22 (3fb752d4)",
+        "semanticVersion": "4.11.0",
+        "language": "en-GB"
+      },
+      "results": [
+        {
+          "ruleId": "CS8618",
+          "level": "warning",
+          "message": "Non-nullable property 'Notifications' must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring the property as nullable.",
+          "suppressionStates": [
+            "suppressedInSource"
+          ],
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/DBContexts/ExitManagementDbContext.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 12,
+                  "endLine": 8,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/DBContexts/ExitManagementDbContext.cs",
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 36,
+                  "endLine": 17,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1066",
+          "level": "warning",
+          "message": "Merge this if statement with the enclosing one.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Repository/ExitRequestRepository.cs",
+                "region": {
+                  "startLine": 108,
+                  "startColumn": 13,
+                  "endLine": 108,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Repository/ExitRequestRepository.cs",
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 9,
+                  "endLine": 107,
+                  "endColumn": 11
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await AnyAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/DBContexts/DbInitializer.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 18,
+                  "endLine": 18,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await AnyAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/DBContexts/DbInitializer.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 18,
+                  "endLine": 33,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await FirstOrDefaultAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/DBContexts/DbInitializer.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 18,
+                  "endLine": 60,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6966",
+          "level": "warning",
+          "message": "Await FirstOrDefaultAsync instead.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/DBContexts/DbInitializer.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 18,
+                  "endLine": 61,
+                  "endColumn": 88
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Migrations/20260305070115_InitialCreate.cs",
+                "region": {
+                  "startLine": 288,
+                  "startColumn": 26,
+                  "endLine": 288,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "columns"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Migrations/20260305070115_InitialCreate.cs",
+                "region": {
+                  "startLine": 298,
+                  "startColumn": 26,
+                  "endLine": 298,
+                  "endColumn": 81
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "columns"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Migrations/20260305070115_InitialCreate.cs",
+                "region": {
+                  "startLine": 326,
+                  "startColumn": 26,
+                  "endLine": 326,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "columns"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Migrations/20260305070115_InitialCreate.cs",
+                "region": {
+                  "startLine": 332,
+                  "startColumn": 26,
+                  "endLine": 332,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "columns"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Migrations/20260305070115_InitialCreate.cs",
+                "region": {
+                  "startLine": 347,
+                  "startColumn": 26,
+                  "endLine": 347,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "columns"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1861",
+          "level": "note",
+          "message": "Prefer 'static readonly' fields over constant array arguments if the called method is called repeatedly and is not mutating the passed array",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Data/Migrations/20260305070115_InitialCreate.cs",
+                "region": {
+                  "startLine": 353,
+                  "startColumn": 26,
+                  "endLine": 353,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "paramName": "columns"
+            }
+          }
+        }
+      ],
+      "rules": {
+        "CA1861": {
+          "id": "CA1861",
+          "shortDescription": "Avoid constant arrays as arguments",
+          "fullDescription": "Constant arrays passed as arguments are not reused when called repeatedly, which implies a new array is created each time. Consider extracting them to 'static readonly' fields to improve performance if the passed array is not mutated within the called method.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1861",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS8618": {
+          "id": "CS8618",
+          "shortDescription": "Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8618)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1066": {
+          "id": "S1066",
+          "shortDescription": "Mergeable \"if\" statements should be combined",
+          "fullDescription": "Nested code - blocks of code inside blocks of code - is eventually necessary, but increases complexity. This is why keeping the code as flat as possible, by avoiding unnecessary nesting, is considered a good practice.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1066",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6966": {
+          "id": "S6966",
+          "shortDescription": "Awaitable method should be used",
+          "fullDescription": "In an async method, any blocking operations should be avoided.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6966",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

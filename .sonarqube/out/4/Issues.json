@@ -1,0 +1,265 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.11.0.0",
+        "fileVersion": "4.11.0-3.25569.22 (3fb752d4)",
+        "semanticVersion": "4.11.0",
+        "language": "en-GB"
+      },
+      "results": [
+        {
+          "ruleId": "CS8601",
+          "level": "warning",
+          "message": "Possible null reference assignment.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/ExitService.cs",
+                "region": {
+                  "startLine": 885,
+                  "startColumn": 25,
+                  "endLine": 885,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1172",
+          "level": "warning",
+          "message": "Remove this unused method parameter 'employeeName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/DocumentService.cs",
+                "region": {
+                  "startLine": 27,
+                  "startColumn": 9,
+                  "endLine": 27,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "IsRemovable": "True"
+            }
+          }
+        },
+        {
+          "ruleId": "S1172",
+          "level": "warning",
+          "message": "Remove this unused method parameter 'effectiveDate'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/DocumentService.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 9,
+                  "endLine": 28,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "IsRemovable": "True"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1860",
+          "level": "note",
+          "message": "Prefer comparing 'Count' to 0 rather than using 'Any()', both for clarity and for performance",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/ExitService.cs",
+                "region": {
+                  "startLine": 476,
+                  "startColumn": 14,
+                  "endLine": 476,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "DiagnosticPropertyKey": "Count"
+            }
+          }
+        },
+        {
+          "ruleId": "S3358",
+          "level": "warning",
+          "message": "Extract this nested ternary operation into an independent statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/ExitService.cs",
+                "region": {
+                  "startLine": 1028,
+                  "startColumn": 35,
+                  "endLine": 1030,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3358",
+          "level": "warning",
+          "message": "Extract this nested ternary operation into an independent statement.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/ExitService.cs",
+                "region": {
+                  "startLine": 1029,
+                  "startColumn": 35,
+                  "endLine": 1030,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1860",
+          "level": "note",
+          "message": "Prefer comparing 'Count' to 0 rather than using 'Any()', both for clarity and for performance",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/ExitService.cs",
+                "region": {
+                  "startLine": 935,
+                  "startColumn": 14,
+                  "endLine": 935,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "DiagnosticPropertyKey": "Count"
+            }
+          }
+        },
+        {
+          "ruleId": "CA1860",
+          "level": "note",
+          "message": "Prefer comparing 'Count' to 0 rather than using 'Any()', both for clarity and for performance",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///D:/MVP/Backend/Relevantz.ExitManagement.Core/Service/ExitService.cs",
+                "region": {
+                  "startLine": 942,
+                  "startColumn": 26,
+                  "endLine": 942,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "DiagnosticPropertyKey": "Count"
+            }
+          }
+        }
+      ],
+      "rules": {
+        "CA1860": {
+          "id": "CA1860",
+          "shortDescription": "Avoid using 'Enumerable.Any()' extension method",
+          "fullDescription": "Prefer using 'IsEmpty', 'Count' or 'Length' properties whichever available, rather than calling 'Enumerable.Any()'. The intent is clearer and it is more performant than using 'Enumerable.Any()' extension method.",
+          "defaultLevel": "note",
+          "helpUri": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1860",
+          "properties": {
+            "category": "Performance",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Telemetry",
+              "EnabledRuleInAggressiveMode"
+            ]
+          }
+        },
+        "CS8601": {
+          "id": "CS8601",
+          "shortDescription": "Possible null reference assignment.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8601)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1172": {
+          "id": "S1172",
+          "shortDescription": "Unused method parameters should be removed",
+          "fullDescription": "A typical code smell known as unused function parameters refers to parameters declared in a function but not used anywhere within the function’s body. While this might seem harmless at first glance, it can lead to confusion and potential errors in your code. Disregarding the values passed to such parameters, the function’s behavior will be the same, but the programmer’s intention won’t be clearly expressed anymore. Therefore, removing function parameters that are not being utilized is considered best practice.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1172",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S3358": {
+          "id": "S3358",
+          "shortDescription": "Ternary operators should not be nested",
+          "fullDescription": "Nested ternaries are hard to read and can make the order of operations complex to understand.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3358",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

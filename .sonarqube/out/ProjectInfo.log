@@ -1,0 +1,31 @@
+Product projects
+---------------------------------------
+D:\MVP\Backend\Relevantz.ExitManagement.Common\Relevantz.ExitManagement.Common.csproj
+D:\MVP\Backend\Relevantz.ExitManagement.Data\Relevantz.ExitManagement.Data.csproj
+D:\MVP\Backend\Relevantz.ExitManagement.Core\Relevantz.ExitManagement.Core.csproj
+D:\MVP\Backend\Relevantz.ExitManagement.Api\Relevantz.ExitManagement.Api.csproj
+
+
+Test projects
+---------------------------------------
+D:\MVP\Backend\Relevantz.ExitManagement.Common.Tests\Relevantz.ExitManagement.Common.Tests.csproj
+D:\MVP\Backend\Relevantz.ExitManagement.Data.Tests\Relevantz.ExitManagement.Data.Tests.csproj
+D:\MVP\Backend\Relevantz.ExitManagement.Core.Tests\Relevantz.ExitManagement.Core.Tests.csproj
+D:\MVP\Backend\Relevantz.ExitManagement.Api.Tests\Relevantz.ExitManagement.Api.Tests.csproj
+
+
+Invalid projects
+---------------------------------------
+{none}
+
+
+Skipped projects
+---------------------------------------
+{none}
+
+
+Excluded projects
+---------------------------------------
+{none}
+
+

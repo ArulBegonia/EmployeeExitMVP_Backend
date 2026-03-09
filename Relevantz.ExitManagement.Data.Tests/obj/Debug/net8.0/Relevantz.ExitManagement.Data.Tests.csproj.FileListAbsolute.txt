@@ -117,3 +117,4 @@ D:\MVP\Backend\Relevantz.ExitManagement.Data.Tests\obj\Debug\net8.0\Relevantz.Ex
 D:\MVP\Backend\Relevantz.ExitManagement.Data.Tests\obj\Debug\net8.0\Relevantz.ExitManagement.Data.Tests.genruntimeconfig.cache
 D:\MVP\Backend\Relevantz.ExitManagement.Data.Tests\obj\Debug\net8.0\ref\Relevantz.ExitManagement.Data.Tests.dll
 D:\MVP\Backend\Relevantz.ExitManagement.Data.Tests\bin\Debug\net8.0\FluentValidation.dll
+D:\MVP\Backend\Relevantz.ExitManagement.Data.Tests\obj\Debug\net8.0\Relevantz.ExitManagement.Data.Tests.sourcelink.json

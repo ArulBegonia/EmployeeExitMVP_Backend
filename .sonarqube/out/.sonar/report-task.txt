@@ -1,0 +1,6 @@
+projectKey=EmployeeExitMVP
+serverUrl=http://localhost:9000
+serverVersion=25.1.0.102122
+dashboardUrl=http://localhost:9000/dashboard?id=EmployeeExitMVP
+ceTaskId=a480c502-c555-488c-9b81-5fbe92943624
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a480c502-c555-488c-9b81-5fbe92943624
