@@ -507,8 +507,7 @@ public class ExitService : IExitService
             throw new InvalidOperationException(
                 $"Exit is not in clearance stage. Current status: {exitRequest.Status}");
 
-        // ✅ REMOVED: "ReturnedDate cannot be in the future" — replaced with LWD check below
-        // Return date must be on or before LWD (future dates within LWD are valid)
+        // Validate against LWD — not today
         if (request.IsCleared && request.ReturnedDate.HasValue &&
             request.ProposedLastWorkingDate.HasValue &&
             request.ReturnedDate.Value > request.ProposedLastWorkingDate.Value)
@@ -516,35 +515,31 @@ public class ExitService : IExitService
                 $"Assets must be returned on or before the employee's Last Working Day " +
                 $"({request.ProposedLastWorkingDate.Value:dd/MM/yyyy}).");
 
-        // ── Return date should not be set when not cleared ──
         if (!request.IsCleared && request.ReturnedDate.HasValue)
             throw new InvalidOperationException(
                 "Returned date should only be set when the item is cleared.");
 
-        // ── Pending due amount must be non-negative ──
         if (request.PendingDueAmount.HasValue && request.PendingDueAmount.Value < 0)
-            throw new InvalidOperationException(
-                "Pending due amount cannot be negative.");
+            throw new InvalidOperationException("Pending due amount cannot be negative.");
 
         if (request.PendingDueAmount.HasValue && request.PendingDueAmount.Value > 10_000_000)
-            throw new InvalidOperationException(
-                "Pending due amount exceeds the allowed maximum.");
+            throw new InvalidOperationException("Pending due amount exceeds the allowed maximum.");
 
-        // ── Due amount only makes sense when not cleared ──
         if (request.IsCleared && request.PendingDueAmount.HasValue)
             throw new InvalidOperationException(
                 "Pending due amount should only be set when the item is not cleared.");
 
         if (!string.IsNullOrWhiteSpace(request.Remarks) && request.Remarks.Length > 1000)
-            throw new InvalidOperationException(
-                "Remarks must not exceed 1000 characters.");
+            throw new InvalidOperationException("Remarks must not exceed 1000 characters.");
 
         item.Status = request.IsCleared ? ClearanceStatus.Cleared : ClearanceStatus.NotCleared;
         item.Remarks = request.Remarks?.Trim();
-        // ✅ Convert DateOnly? back to DateTime? for entity storage
         item.ReturnedDate = request.ReturnedDate.HasValue
-                                ? request.ReturnedDate.Value.ToDateTime(TimeOnly.MinValue)
-                                : null;
+            ? DateTime.SpecifyKind(
+                request.ReturnedDate.Value.ToDateTime(TimeOnly.MinValue),
+                DateTimeKind.Unspecified)   // ← key fix: no UTC conversion
+            : null;
+
         item.PendingDueAmount = request.PendingDueAmount;
 
         await _repository.AddAuditLogAsync(new AuditLog
@@ -556,6 +551,7 @@ public class ExitService : IExitService
         await _repository.SaveChangesAsync();
         await CheckAllClearedAndAdvanceAsync(item.ExitRequestId, employeeId);
     }
+
 
 
     // ── Auto-advance when all items cleared ────────────────────────────────
@@ -869,20 +865,24 @@ public class ExitService : IExitService
     }
 
     public async Task<List<ClearanceItemResponseDto>> GetClearanceItemsAsync(
-        int exitRequestId, string dept)
+    int exitRequestId, string dept)
+{
+    var items = await _repository.GetClearanceItemsByDeptAsync(exitRequestId, dept);
+    return items.Select(i => new ClearanceItemResponseDto
     {
-        var items = await _repository.GetClearanceItemsByDeptAsync(exitRequestId, dept);
-        return items.Select(i => new ClearanceItemResponseDto
-        {
-            Id = i.Id,
-            ItemName = i.ItemName,
-            DepartmentName = i.DepartmentName,
-            Status = i.Status.ToString(),
-            Remarks = i.Remarks,
-            ReturnedDate = i.ReturnedDate,
-            PendingDueAmount = i.PendingDueAmount
-        }).ToList();
-    }
+        Id               = i.Id,
+        ItemName         = i.ItemName,
+        DepartmentName   = i.DepartmentName,
+        Status           = i.Status.ToString(),
+        Remarks          = i.Remarks,
+        // Convert DateTime? → DateOnly? safely
+        ReturnedDate     = i.ReturnedDate.HasValue
+                           ? DateOnly.FromDateTime(i.ReturnedDate.Value)
+                           : null,
+        PendingDueAmount = i.PendingDueAmount
+    }).ToList();
+}
+
 
     public async Task<List<AssetDeclarationDto>> GetAssetsByExitIdAsync(int exitRequestId)
     {
