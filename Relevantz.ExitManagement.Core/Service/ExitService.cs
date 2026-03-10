@@ -11,8 +11,8 @@ public class ExitService : IExitService
 {
     private readonly IExitRequestRepository _repository;
     private const int DEFAULT_NOTICE_PERIOD = 30;
-    private const int MAX_ASSETS            = 20;
-    private const int MAX_KT_TASKS          = 20;
+    private const int MAX_ASSETS = 20;
+    private const int MAX_KT_TASKS = 20;
 
     private static readonly Dictionary<string, List<string>> CLEARANCE_ITEMS = new()
     {
@@ -126,18 +126,18 @@ public class ExitService : IExitService
         // ── Build exit request ──
         var exitRequest = new ExitRequest
         {
-            EmployeeId              = employeeId,
-            ResignationDate         = DateTime.UtcNow,
-            SubmittedDate           = DateTime.UtcNow,
-            NoticePeriodDays        = DEFAULT_NOTICE_PERIOD,
+            EmployeeId = employeeId,
+            ResignationDate = DateTime.UtcNow,
+            SubmittedDate = DateTime.UtcNow,
+            NoticePeriodDays = DEFAULT_NOTICE_PERIOD,
             CalculatedLastWorkingDate = minimumLwd,
             ProposedLastWorkingDate = request.ProposedLastWorkingDate,
-            ReasonType              = request.ReasonType,
-            DetailedReason          = request.DetailedReason?.Trim(),
-            Reason                  = request.DetailedReason?.Trim()
+            ReasonType = request.ReasonType,
+            DetailedReason = request.DetailedReason?.Trim(),
+            Reason = request.DetailedReason?.Trim()
                                         ?? request.ReasonType.ToString(),
-            HandoverBuddyId         = request.HandoverBuddyId,
-            HandoverNotes           = request.HandoverNotes?.Trim(),
+            HandoverBuddyId = request.HandoverBuddyId,
+            HandoverNotes = request.HandoverNotes?.Trim(),
         };
 
         bool isHrOrAdmin = employee.RoleId == 1 || employee.RoleId == 2;
@@ -187,8 +187,8 @@ public class ExitService : IExitService
                 await _repository.AddApprovalAsync(new ExitApproval
                 {
                     ExitRequestId = exitRequest.Id,
-                    ApproverId    = employee.L1ManagerId.Value,
-                    Status        = ApprovalStatus.Pending
+                    ApproverId = employee.L1ManagerId.Value,
+                    Status = ApprovalStatus.Pending
                 });
 
                 await SendNotificationAsync(employee.L1ManagerId.Value,
@@ -199,9 +199,9 @@ public class ExitService : IExitService
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"Employee {employeeId} submitted resignation → ExitRequest {exitRequest.Id}",
+            Action = $"Employee {employeeId} submitted resignation → ExitRequest {exitRequest.Id}",
             PerformedBy = employeeId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
         return exitRequest.Id;
@@ -214,8 +214,8 @@ public class ExitService : IExitService
         var entities = assets.Select(a => new AssetDeclaration
         {
             ExitRequestId = exitRequestId,
-            AssetName     = a.AssetName.Trim(),
-            AssetCode     = a.AssetCode?.Trim()
+            AssetName = a.AssetName.Trim(),
+            AssetCode = a.AssetCode?.Trim()
         }).ToList();
         await _repository.AddAssetDeclarationsAsync(entities);
     }
@@ -298,10 +298,10 @@ public class ExitService : IExitService
 
         if (!request.IsApproved)
         {
-            approval.Status     = ApprovalStatus.Rejected;
-            approval.Remarks    = request.Remarks?.Trim();
+            approval.Status = ApprovalStatus.Rejected;
+            approval.Remarks = request.Remarks?.Trim();
             approval.ActionDate = DateTime.UtcNow;
-            exitRequest.Status  = ExitStatus.Rejected;
+            exitRequest.Status = ExitStatus.Rejected;
 
             await SendNotificationAsync(exitRequest.EmployeeId,
                 "Resignation Rejected",
@@ -310,16 +310,16 @@ public class ExitService : IExitService
 
             await _repository.AddAuditLogAsync(new AuditLog
             {
-                Action      = $"Manager {managerId} rejected ExitRequest {request.ExitRequestId}",
+                Action = $"Manager {managerId} rejected ExitRequest {request.ExitRequestId}",
                 PerformedBy = managerId.ToString(),
-                Timestamp   = DateTime.UtcNow
+                Timestamp = DateTime.UtcNow
             });
             await _repository.SaveChangesAsync();
             return;
         }
 
-        approval.Status     = ApprovalStatus.Approved;
-        approval.Remarks    = request.Remarks?.Trim();
+        approval.Status = ApprovalStatus.Approved;
+        approval.Remarks = request.Remarks?.Trim();
         approval.ActionDate = DateTime.UtcNow;
 
         if (request.KtTasks != null && request.KtTasks.Count > 0)
@@ -327,10 +327,10 @@ public class ExitService : IExitService
             var tasks = request.KtTasks.Select(t => new KtTask
             {
                 ExitRequestId = exitRequest.Id,
-                Title         = t.Title.Trim(),
-                Description   = t.Description?.Trim(),
-                Deadline      = t.Deadline,
-                CreatedAt     = DateTime.UtcNow
+                Title = t.Title.Trim(),
+                Description = t.Description?.Trim(),
+                Deadline = t.Deadline,
+                CreatedAt = DateTime.UtcNow
             }).ToList();
             await _repository.AddKtTasksAsync(tasks);
         }
@@ -347,8 +347,8 @@ public class ExitService : IExitService
                 await _repository.AddApprovalAsync(new ExitApproval
                 {
                     ExitRequestId = exitRequest.Id,
-                    ApproverId    = employee.L2ManagerId.Value,
-                    Status        = ApprovalStatus.Pending
+                    ApproverId = employee.L2ManagerId.Value,
+                    Status = ApprovalStatus.Pending
                 });
                 await SendNotificationAsync(employee.L2ManagerId.Value,
                     "Resignation Pending Your Approval",
@@ -367,7 +367,7 @@ public class ExitService : IExitService
         else if (exitRequest.Status == ExitStatus.PendingL2Approval)
         {
             exitRequest.L2ApprovedDate = DateTime.UtcNow;
-            exitRequest.Status         = ExitStatus.PendingHrReview;
+            exitRequest.Status = ExitStatus.PendingHrReview;
             var hrUser = await _repository.GetFirstHrAsync();
             if (hrUser != null)
                 await SendNotificationAsync(hrUser.Id,
@@ -377,9 +377,9 @@ public class ExitService : IExitService
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"Manager {managerId} approved ExitRequest {request.ExitRequestId}",
+            Action = $"Manager {managerId} approved ExitRequest {request.ExitRequestId}",
             PerformedBy = managerId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
     }
@@ -413,25 +413,25 @@ public class ExitService : IExitService
 
             await _repository.AddAuditLogAsync(new AuditLog
             {
-                Action      = $"HR {hrId} rejected ExitRequest {request.ExitRequestId}",
+                Action = $"HR {hrId} rejected ExitRequest {request.ExitRequestId}",
                 PerformedBy = hrId.ToString(),
-                Timestamp   = DateTime.UtcNow
+                Timestamp = DateTime.UtcNow
             });
             await _repository.SaveChangesAsync();
             return;
         }
 
         exitRequest.HrApprovedDate = DateTime.UtcNow;
-        exitRequest.Status         = ExitStatus.ClearanceInProgress;
+        exitRequest.Status = ExitStatus.ClearanceInProgress;
 
         foreach (var (dept, items) in CLEARANCE_ITEMS)
             foreach (var itemName in items)
                 await _repository.AddClearanceItemAsync(new ClearanceItem
                 {
-                    ExitRequestId  = exitRequest.Id,
+                    ExitRequestId = exitRequest.Id,
                     DepartmentName = dept,
-                    ItemName       = itemName,
-                    Status         = ClearanceStatus.Pending
+                    ItemName = itemName,
+                    Status = ClearanceStatus.Pending
                 });
 
         await SendNotificationAsync(exitRequest.EmployeeId,
@@ -441,9 +441,9 @@ public class ExitService : IExitService
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"HR {hrId} approved ExitRequest {request.ExitRequestId} → ClearanceInProgress",
+            Action = $"HR {hrId} approved ExitRequest {request.ExitRequestId} → ClearanceInProgress",
             PerformedBy = hrId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
     }
@@ -479,20 +479,21 @@ public class ExitService : IExitService
 
         foreach (var item in deptItems)
         {
-            item.Status  = request.IsCleared ? ClearanceStatus.Cleared : ClearanceStatus.NotCleared;
+            item.Status = request.IsCleared ? ClearanceStatus.Cleared : ClearanceStatus.NotCleared;
             item.Remarks = request.Remarks?.Trim();
         }
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"{request.DepartmentName} bulk clearance for ExitRequest {request.ExitRequestId}",
+            Action = $"{request.DepartmentName} bulk clearance for ExitRequest {request.ExitRequestId}",
             PerformedBy = employeeId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
         await CheckAllClearedAndAdvanceAsync(request.ExitRequestId, employeeId);
     }
 
+    // ── Per-item clearance ──────────────────────────────────────────────────
     // ── Per-item clearance ──────────────────────────────────────────────────
     public async Task UpdateClearanceItemAsync(int employeeId, UpdateClearanceItemDto request)
     {
@@ -506,11 +507,14 @@ public class ExitService : IExitService
             throw new InvalidOperationException(
                 $"Exit is not in clearance stage. Current status: {exitRequest.Status}");
 
-        // ── Return date cannot be in the future ──
+        // ✅ REMOVED: "ReturnedDate cannot be in the future" — replaced with LWD check below
+        // Return date must be on or before LWD (future dates within LWD are valid)
         if (request.IsCleared && request.ReturnedDate.HasValue &&
-            request.ReturnedDate.Value.Date > DateTime.UtcNow.Date)
+            request.ProposedLastWorkingDate.HasValue &&
+            request.ReturnedDate.Value > request.ProposedLastWorkingDate.Value)
             throw new InvalidOperationException(
-                "Returned date cannot be in the future.");
+                $"Assets must be returned on or before the employee's Last Working Day " +
+                $"({request.ProposedLastWorkingDate.Value:dd/MM/yyyy}).");
 
         // ── Return date should not be set when not cleared ──
         if (!request.IsCleared && request.ReturnedDate.HasValue)
@@ -535,20 +539,24 @@ public class ExitService : IExitService
             throw new InvalidOperationException(
                 "Remarks must not exceed 1000 characters.");
 
-        item.Status           = request.IsCleared ? ClearanceStatus.Cleared : ClearanceStatus.NotCleared;
-        item.Remarks          = request.Remarks?.Trim();
-        item.ReturnedDate     = request.ReturnedDate;
+        item.Status = request.IsCleared ? ClearanceStatus.Cleared : ClearanceStatus.NotCleared;
+        item.Remarks = request.Remarks?.Trim();
+        // ✅ Convert DateOnly? back to DateTime? for entity storage
+        item.ReturnedDate = request.ReturnedDate.HasValue
+                                ? request.ReturnedDate.Value.ToDateTime(TimeOnly.MinValue)
+                                : null;
         item.PendingDueAmount = request.PendingDueAmount;
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"Clearance item '{item.ItemName}' updated for ExitRequest {item.ExitRequestId}",
+            Action = $"Clearance item '{item.ItemName}' updated for ExitRequest {item.ExitRequestId}",
             PerformedBy = employeeId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
         await CheckAllClearedAndAdvanceAsync(item.ExitRequestId, employeeId);
     }
+
 
     // ── Auto-advance when all items cleared ────────────────────────────────
     private async Task CheckAllClearedAndAdvanceAsync(int exitRequestId, int actorId)
@@ -561,7 +569,7 @@ public class ExitService : IExitService
             var er = await _repository.GetExitRequestByIdAsync(exitRequestId);
             if (er != null && er.Status == ExitStatus.ClearanceInProgress)
             {
-                er.Status                 = ExitStatus.SettlementPending;
+                er.Status = ExitStatus.SettlementPending;
                 er.ClearanceCompletedDate = DateTime.UtcNow;
 
                 await SendNotificationAsync(er.EmployeeId,
@@ -578,9 +586,9 @@ public class ExitService : IExitService
 
                 await _repository.AddAuditLogAsync(new AuditLog
                 {
-                    Action      = $"All clearance done for ExitRequest {exitRequestId} → SettlementPending",
+                    Action = $"All clearance done for ExitRequest {exitRequestId} → SettlementPending",
                     PerformedBy = actorId.ToString(),
-                    Timestamp   = DateTime.UtcNow
+                    Timestamp = DateTime.UtcNow
                 });
                 await _repository.SaveChangesAsync();
             }
@@ -624,17 +632,17 @@ public class ExitService : IExitService
 
             await _repository.AddAuditLogAsync(new AuditLog
             {
-                Action      = $"HR {approverId} rejected settlement for ExitRequest {request.ExitRequestId}",
+                Action = $"HR {approverId} rejected settlement for ExitRequest {request.ExitRequestId}",
                 PerformedBy = approverId.ToString(),
-                Timestamp   = DateTime.UtcNow
+                Timestamp = DateTime.UtcNow
             });
             await _repository.SaveChangesAsync();
             return;
         }
 
-        exitRequest.Status                   = ExitStatus.Completed;
-        exitRequest.CompletedDate            = DateTime.UtcNow;
-        exitRequest.SettlementCompletedDate  = DateTime.UtcNow;
+        exitRequest.Status = ExitStatus.Completed;
+        exitRequest.CompletedDate = DateTime.UtcNow;
+        exitRequest.SettlementCompletedDate = DateTime.UtcNow;
 
         var employee = await _repository.GetEmployeeByIdAsync(exitRequest.EmployeeId)
             ?? throw new NotFoundException("Employee not found.");
@@ -648,9 +656,9 @@ public class ExitService : IExitService
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"HR {approverId} approved settlement. ExitRequest {request.ExitRequestId} → Completed",
+            Action = $"HR {approverId} approved settlement. ExitRequest {request.ExitRequestId} → Completed",
             PerformedBy = approverId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
     }
@@ -723,29 +731,29 @@ public class ExitService : IExitService
                     "Each task must have a unique title.");
         }
 
-        exitRequest.IsKtCompleted       = request.IsCompleted;
+        exitRequest.IsKtCompleted = request.IsCompleted;
         exitRequest.SuccessorEmployeeId = request.SuccessorEmployeeId;
-        exitRequest.KtRemarks           = request.Remarks?.Trim();
+        exitRequest.KtRemarks = request.Remarks?.Trim();
 
         if (request.Tasks != null && request.Tasks.Count > 0)
         {
             var tasks = request.Tasks.Select(t => new KtTask
             {
                 ExitRequestId = exitRequest.Id,
-                Title         = t.Title.Trim(),
-                Description   = t.Description?.Trim(),
-                Deadline      = t.Deadline,
-                CreatedAt     = DateTime.UtcNow
+                Title = t.Title.Trim(),
+                Description = t.Description?.Trim(),
+                Deadline = t.Deadline,
+                CreatedAt = DateTime.UtcNow
             }).ToList();
             await _repository.AddKtTasksAsync(tasks);
         }
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"KT updated for ExitRequest {request.ExitRequestId} — " +
+            Action = $"KT updated for ExitRequest {request.ExitRequestId} — " +
                           $"Completed: {request.IsCompleted}",
             PerformedBy = managerId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
     }
@@ -769,15 +777,15 @@ public class ExitService : IExitService
             throw new InvalidOperationException(
                 "Completion notes must not exceed 2000 characters.");
 
-        task.IsCompleted     = request.IsCompleted;
+        task.IsCompleted = request.IsCompleted;
         task.CompletionNotes = request.CompletionNotes?.Trim();
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"KT task '{task.Title}' marked " +
+            Action = $"KT task '{task.Title}' marked " +
                           $"{(request.IsCompleted ? "complete" : "incomplete")}",
             PerformedBy = managerId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
     }
@@ -812,8 +820,8 @@ public class ExitService : IExitService
             ?? throw new NotFoundException(
                 "No completed exit found for this employee.");
 
-        er.RehireDecision     = (RehireDecision?)request.Decision;
-        er.RehireRemarks      = request.Remarks?.Trim();
+        er.RehireDecision = (RehireDecision?)request.Decision;
+        er.RehireRemarks = request.Remarks?.Trim();
         er.RehireDecisionDate = DateTime.UtcNow;
         er.RehireBlockedUntil = request.Decision == RehireDecision.NotEligible
                                 && request.BlockMonths.HasValue
@@ -822,9 +830,9 @@ public class ExitService : IExitService
 
         await _repository.AddAuditLogAsync(new AuditLog
         {
-            Action      = $"HR {hrId} set rehire → {request.Decision} for employee {request.EmployeeId}",
+            Action = $"HR {hrId} set rehire → {request.Decision} for employee {request.EmployeeId}",
             PerformedBy = hrId.ToString(),
-            Timestamp   = DateTime.UtcNow
+            Timestamp = DateTime.UtcNow
         });
         await _repository.SaveChangesAsync();
     }
@@ -850,13 +858,13 @@ public class ExitService : IExitService
         var tasks = await _repository.GetKtTasksByExitIdAsync(exitRequestId);
         return tasks.Select(k => new KtTaskResponseDto
         {
-            Id              = k.Id,
-            Title           = k.Title,
-            Description     = k.Description,
-            Deadline        = k.Deadline,
-            IsCompleted     = k.IsCompleted,
+            Id = k.Id,
+            Title = k.Title,
+            Description = k.Description,
+            Deadline = k.Deadline,
+            IsCompleted = k.IsCompleted,
             CompletionNotes = k.CompletionNotes,
-            CreatedAt       = k.CreatedAt
+            CreatedAt = k.CreatedAt
         }).ToList();
     }
 
@@ -866,12 +874,12 @@ public class ExitService : IExitService
         var items = await _repository.GetClearanceItemsByDeptAsync(exitRequestId, dept);
         return items.Select(i => new ClearanceItemResponseDto
         {
-            Id             = i.Id,
-            ItemName       = i.ItemName,
+            Id = i.Id,
+            ItemName = i.ItemName,
             DepartmentName = i.DepartmentName,
-            Status         = i.Status.ToString(),
-            Remarks        = i.Remarks,
-            ReturnedDate   = i.ReturnedDate,
+            Status = i.Status.ToString(),
+            Remarks = i.Remarks,
+            ReturnedDate = i.ReturnedDate,
             PendingDueAmount = i.PendingDueAmount
         }).ToList();
     }
@@ -895,19 +903,19 @@ public class ExitService : IExitService
 
         return new ExitStatusResponseDto
         {
-            ExitRequestId           = exitRequest.Id,
-            Status                  = exitRequest.Status.ToString(),
+            ExitRequestId = exitRequest.Id,
+            Status = exitRequest.Status.ToString(),
             ProposedLastWorkingDate = exitRequest.ProposedLastWorkingDate,
-            CompletedDate           = exitRequest.CompletedDate,
+            CompletedDate = exitRequest.CompletedDate,
             KtTasks = ktTasks.Select(k => new KtTaskResponseDto
             {
-                Id              = k.Id,
-                Title           = k.Title,
-                Description     = k.Description,
-                Deadline        = k.Deadline,
-                IsCompleted     = k.IsCompleted,
+                Id = k.Id,
+                Title = k.Title,
+                Description = k.Description,
+                Deadline = k.Deadline,
+                IsCompleted = k.IsCompleted,
                 CompletionNotes = k.CompletionNotes,
-                CreatedAt       = k.CreatedAt
+                CreatedAt = k.CreatedAt
             }).ToList()
         };
     }
@@ -935,7 +943,7 @@ public class ExitService : IExitService
         if (!exits.Any()) return new ExitAnalyticsResponseDto();
 
         var completed = exits.Where(e => e.Status == ExitStatus.Completed).ToList();
-        var pending   = exits.Where(e =>
+        var pending = exits.Where(e =>
             e.Status != ExitStatus.Completed &&
             e.Status != ExitStatus.Rejected).ToList();
 
@@ -958,15 +966,15 @@ public class ExitService : IExitService
 
         return new ExitAnalyticsResponseDto
         {
-            TotalExits             = exits.Count,
-            CompletedExits         = completed.Count,
-            PendingExits           = pending.Count,
-            AverageProcessingDays  = Math.Round(avgDays, 2),
-            LowRiskCount           = riskGroups.GetValueOrDefault(ExitRiskLevel.Low),
-            MediumRiskCount        = riskGroups.GetValueOrDefault(ExitRiskLevel.Medium),
-            HighRiskCount          = riskGroups.GetValueOrDefault(ExitRiskLevel.High),
-            CriticalRiskCount      = riskGroups.GetValueOrDefault(ExitRiskLevel.Critical),
-            TopResignationReason   = topReason
+            TotalExits = exits.Count,
+            CompletedExits = completed.Count,
+            PendingExits = pending.Count,
+            AverageProcessingDays = Math.Round(avgDays, 2),
+            LowRiskCount = riskGroups.GetValueOrDefault(ExitRiskLevel.Low),
+            MediumRiskCount = riskGroups.GetValueOrDefault(ExitRiskLevel.Medium),
+            HighRiskCount = riskGroups.GetValueOrDefault(ExitRiskLevel.High),
+            CriticalRiskCount = riskGroups.GetValueOrDefault(ExitRiskLevel.Critical),
+            TopResignationReason = topReason
         };
     }
 
@@ -975,10 +983,10 @@ public class ExitService : IExitService
         var ns = await _repository.GetNotificationsByEmployeeAsync(employeeId);
         return ns.Select(n => new NotificationResponseDto
         {
-            Id        = n.Id,
-            Title     = n.Title,
-            Message   = n.Message,
-            IsRead    = n.IsRead,
+            Id = n.Id,
+            Title = n.Title,
+            Message = n.Message,
+            IsRead = n.IsRead,
             CreatedAt = n.CreatedAt
         }).ToList();
     }
@@ -1023,8 +1031,8 @@ public class ExitService : IExitService
         var noticeDays = (exitRequest.ProposedLastWorkingDate - DateTime.UtcNow).TotalDays;
         if (noticeDays < 30) { score += 20; reasons.Add("Short notice"); }
 
-        exitRequest.RiskScore   = score;
-        exitRequest.RiskLevel   = score <= 25 ? ExitRiskLevel.Low
+        exitRequest.RiskScore = score;
+        exitRequest.RiskLevel = score <= 25 ? ExitRiskLevel.Low
                                 : score <= 50 ? ExitRiskLevel.Medium
                                 : score <= 75 ? ExitRiskLevel.High
                                               : ExitRiskLevel.Critical;
@@ -1036,32 +1044,32 @@ public class ExitService : IExitService
         => await _repository.AddNotificationAsync(new Notification
         {
             RecipientEmployeeId = recipientId,
-            Title               = title,
-            Message             = message,
-            CreatedAt           = DateTime.UtcNow
+            Title = title,
+            Message = message,
+            CreatedAt = DateTime.UtcNow
         });
 
     // ── ToSummary ───────────────────────────────────────────────────────────
     private static ExitRequestSummaryDto ToSummary(ExitRequest e) => new()
     {
-        Id                      = e.Id,
-        EmployeeId              = e.Employee.Id,
-        EmployeeName            = e.Employee.FirstName + " " + e.Employee.LastName,
-        EmployeeCode            = e.Employee.EmployeeCode,
-        Department              = e.Employee.Department ?? string.Empty,
-        Status                  = e.Status.ToString(),
-        RiskLevel               = e.RiskLevel.ToString(),
-        RiskScore               = e.RiskScore,
+        Id = e.Id,
+        EmployeeId = e.Employee.Id,
+        EmployeeName = e.Employee.FirstName + " " + e.Employee.LastName,
+        EmployeeCode = e.Employee.EmployeeCode,
+        Department = e.Employee.Department ?? string.Empty,
+        Status = e.Status.ToString(),
+        RiskLevel = e.RiskLevel.ToString(),
+        RiskScore = e.RiskScore,
         ProposedLastWorkingDate = e.ProposedLastWorkingDate,
-        SubmittedAt             = e.SubmittedDate,
-        CompletedDate           = e.CompletedDate,
-        ResignationReason       = e.Reason ?? string.Empty,
-        IsKtCompleted           = e.IsKtCompleted,
-        RehireDecision          = e.RehireDecision.HasValue
+        SubmittedAt = e.SubmittedDate,
+        CompletedDate = e.CompletedDate,
+        ResignationReason = e.Reason ?? string.Empty,
+        IsKtCompleted = e.IsKtCompleted,
+        RehireDecision = e.RehireDecision.HasValue
                                     ? e.RehireDecision.Value.ToString()
                                     : null,
-        RehireRemarks           = e.RehireRemarks,
-        RehireDecisionDate      = e.RehireDecisionDate,
-        RehireBlockedUntil      = e.RehireBlockedUntil,
+        RehireRemarks = e.RehireRemarks,
+        RehireDecisionDate = e.RehireDecisionDate,
+        RehireBlockedUntil = e.RehireBlockedUntil,
     };
 }
