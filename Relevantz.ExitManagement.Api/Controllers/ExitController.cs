@@ -91,7 +91,8 @@ public class ExitController : ControllerBase
         return Ok(ApiResponse<string>.SuccessResponse("Completed", "Exit process completed."));
     }
 
-    [Authorize(Roles = "EMPLOYEE,HR,ADMIN,MANAGER")]
+    // ── FIX: Added IT to allowed roles ──
+    [Authorize(Roles = "EMPLOYEE,HR,ADMIN,MANAGER,IT")]
     [HttpGet("my-exit-status")]
     public async Task<IActionResult> GetMyExitStatus()
     {
@@ -157,7 +158,6 @@ public class ExitController : ControllerBase
         return File(pdf, "application/pdf", "ClearanceCertificate.pdf");
     }
 
-
     [Authorize(Roles = "MANAGER")]
     [HttpPost("update-knowledge-transfer")]
     public async Task<IActionResult> UpdateKnowledgeTransfer(
@@ -208,7 +208,6 @@ public class ExitController : ControllerBase
         return Ok(ApiResponse<List<ExitRequestSummaryDto>>.SuccessResponse(result));
     }
 
-    // ── Flaw 3 & 9: All active exits for manager's KT dashboard ──
     [Authorize(Roles = "MANAGER")]
     [HttpGet("active-for-manager")]
     public async Task<IActionResult> GetActiveForManager()

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Relevantz.ExitManagement.Api.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed29c1569c0b22ea9f48f5be58b9e0a9133f7b49")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65111d9e2104dadd06100c373df7674b3fde714f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Relevantz.ExitManagement.Api.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Relevantz.ExitManagement.Api.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

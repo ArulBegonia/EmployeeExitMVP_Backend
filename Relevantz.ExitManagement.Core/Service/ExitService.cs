@@ -674,7 +674,7 @@ public class ExitService : IExitService
             throw new InvalidOperationException(
                 "KT remarks must not exceed 2000 characters.");
 
-        // ── Successor must not be self ──
+        // ── Successor must not be the exiting employee ──
         if (request.SuccessorEmployeeId.HasValue &&
             request.SuccessorEmployeeId.Value == exitRequest.EmployeeId)
             throw new InvalidOperationException(
@@ -690,11 +690,17 @@ public class ExitService : IExitService
         }
 
         // ── KT task validations ──
-        if (request.Tasks != null)
+        if (request.Tasks != null && request.Tasks.Count > 0)
         {
             if (request.Tasks.Count > MAX_KT_TASKS)
                 throw new InvalidOperationException(
                     $"Cannot assign more than {MAX_KT_TASKS} KT tasks at once.");
+
+            // ── FIX: Load existing task titles from DB to prevent duplicates ──
+            var existingTasks = await _repository.GetKtTasksByExitIdAsync(request.ExitRequestId);
+            var existingTitles = existingTasks
+                .Select(t => t.Title.Trim().ToLower())
+                .ToHashSet();
 
             for (int i = 0; i < request.Tasks.Count; i++)
             {
@@ -716,8 +722,15 @@ public class ExitService : IExitService
                     throw new InvalidOperationException(
                         $"KT task [{i + 1}] '{task.Title}': " +
                         $"Deadline '{task.Deadline:dd MMM yyyy}' cannot be in the past.");
+
+                // ── FIX: Check against existing DB tasks too ──
+                if (existingTitles.Contains(task.Title.Trim().ToLower()))
+                    throw new InvalidOperationException(
+                        $"A KT task named \"{task.Title.Trim()}\" already exists for this exit request. " +
+                        "Please use a different title.");
             }
 
+            // ── Duplicate title check within the new batch itself ──
             var dupTitle = request.Tasks
                 .GroupBy(t => t.Title.Trim().ToLower())
                 .FirstOrDefault(g => g.Count() > 1);
@@ -753,6 +766,7 @@ public class ExitService : IExitService
         });
         await _repository.SaveChangesAsync();
     }
+
 
     // ── KT Task Status ──────────────────────────────────────────────────────
     public async Task UpdateKtTaskStatusAsync(int managerId, UpdateKtTaskStatusDto request)
@@ -866,22 +880,22 @@ public class ExitService : IExitService
 
     public async Task<List<ClearanceItemResponseDto>> GetClearanceItemsAsync(
     int exitRequestId, string dept)
-{
-    var items = await _repository.GetClearanceItemsByDeptAsync(exitRequestId, dept);
-    return items.Select(i => new ClearanceItemResponseDto
     {
-        Id               = i.Id,
-        ItemName         = i.ItemName,
-        DepartmentName   = i.DepartmentName,
-        Status           = i.Status.ToString(),
-        Remarks          = i.Remarks,
-        // Convert DateTime? → DateOnly? safely
-        ReturnedDate     = i.ReturnedDate.HasValue
-                           ? DateOnly.FromDateTime(i.ReturnedDate.Value)
-                           : null,
-        PendingDueAmount = i.PendingDueAmount
-    }).ToList();
-}
+        var items = await _repository.GetClearanceItemsByDeptAsync(exitRequestId, dept);
+        return items.Select(i => new ClearanceItemResponseDto
+        {
+            Id = i.Id,
+            ItemName = i.ItemName,
+            DepartmentName = i.DepartmentName,
+            Status = i.Status.ToString(),
+            Remarks = i.Remarks,
+            // Convert DateTime? → DateOnly? safely
+            ReturnedDate = i.ReturnedDate.HasValue
+                               ? DateOnly.FromDateTime(i.ReturnedDate.Value)
+                               : null,
+            PendingDueAmount = i.PendingDueAmount
+        }).ToList();
+    }
 
 
     public async Task<List<AssetDeclarationDto>> GetAssetsByExitIdAsync(int exitRequestId)

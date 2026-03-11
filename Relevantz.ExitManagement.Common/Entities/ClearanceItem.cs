@@ -23,9 +23,6 @@ public class ClearanceItem
 
     [StringLength(1000)]
     public string? Remarks { get; set; }
-
-    // ✅ Keep as DateTime? to match datetime(6) DB column
-    // Store as Unspecified Kind (no UTC conversion) via ExitService
     public DateTime? ReturnedDate { get; set; }
 
     [Column(TypeName = "decimal(18,2)")]

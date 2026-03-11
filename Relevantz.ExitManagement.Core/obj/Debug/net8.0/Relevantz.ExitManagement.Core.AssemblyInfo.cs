@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Relevantz.ExitManagement.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34dab073b98d4d506afad73c2b75547da75359b0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65111d9e2104dadd06100c373df7674b3fde714f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Relevantz.ExitManagement.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Relevantz.ExitManagement.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
