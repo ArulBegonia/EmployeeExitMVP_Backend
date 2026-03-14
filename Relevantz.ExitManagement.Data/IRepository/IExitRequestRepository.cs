@@ -42,4 +42,5 @@ public interface IExitRequestRepository
 
     Task<Notification?>  GetNotificationByIdAsync(int id);
     Task<List<Notification>> GetNotificationsByEmployeeAsync(int employeeId);
+    Task<Employee?> GetEmployeeByCodeAsync(string employeeCode);
 }

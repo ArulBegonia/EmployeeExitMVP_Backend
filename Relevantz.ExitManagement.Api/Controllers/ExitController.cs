@@ -22,6 +22,8 @@ public class ExitController : ControllerBase
     private int CurrentEmpId() =>
         int.Parse(User.FindFirst("empId")!.Value);
 
+    // ── Resignation ───────────────────────────────────────────────────────
+
     [Authorize(Roles = "EMPLOYEE,MANAGER,HR,ADMIN")]
     [HttpPost("resign")]
     public async Task<IActionResult> SubmitResignation(
@@ -30,6 +32,8 @@ public class ExitController : ControllerBase
         var id = await _exitService.SubmitResignationAsync(CurrentEmpId(), request);
         return Ok(ApiResponse<int>.SuccessResponse(id, "Resignation submitted successfully."));
     }
+
+    // ── Manager ───────────────────────────────────────────────────────────
 
     [Authorize(Roles = "MANAGER")]
     [HttpPost("manager-approval")]
@@ -40,6 +44,8 @@ public class ExitController : ControllerBase
         return Ok(ApiResponse<string>.SuccessResponse("Processed", "Manager decision recorded."));
     }
 
+    // ── HR ────────────────────────────────────────────────────────────────
+
     [Authorize(Roles = "HR")]
     [HttpPost("hr-approval")]
     public async Task<IActionResult> HrApproval([FromBody] HrApprovalRequestDto request)
@@ -47,6 +53,8 @@ public class ExitController : ControllerBase
         await _exitService.HrApproveAsync(CurrentEmpId(), request);
         return Ok(ApiResponse<string>.SuccessResponse("HR Approved", "HR approval recorded."));
     }
+
+    // ── Clearance ─────────────────────────────────────────────────────────
 
     [Authorize(Roles = "IT,ADMIN")]
     [HttpPost("update-clearance")]
@@ -82,6 +90,8 @@ public class ExitController : ControllerBase
         return Ok(ApiResponse<List<AssetDeclarationDto>>.SuccessResponse(assets));
     }
 
+    // ── Settlement ────────────────────────────────────────────────────────
+
     [Authorize(Roles = "HR,ADMIN")]
     [HttpPost("approve-settlement")]
     public async Task<IActionResult> ApproveSettlement(
@@ -91,7 +101,8 @@ public class ExitController : ControllerBase
         return Ok(ApiResponse<string>.SuccessResponse("Completed", "Exit process completed."));
     }
 
-    // ── FIX: Added IT to allowed roles ──
+    // ── Status ────────────────────────────────────────────────────────────
+
     [Authorize(Roles = "EMPLOYEE,HR,ADMIN,MANAGER,IT")]
     [HttpGet("my-exit-status")]
     public async Task<IActionResult> GetMyExitStatus()
@@ -100,6 +111,8 @@ public class ExitController : ControllerBase
         return Ok(ApiResponse<ExitStatusResponseDto>.SuccessResponse(result));
     }
 
+    // ── Analytics ─────────────────────────────────────────────────────────
+
     [Authorize(Roles = "ADMIN,HR")]
     [HttpGet("analytics")]
     public async Task<IActionResult> GetAnalytics()
@@ -107,6 +120,8 @@ public class ExitController : ControllerBase
         var result = await _exitService.GetExitAnalyticsAsync();
         return Ok(result);
     }
+
+    // ── Rehire ────────────────────────────────────────────────────────────
 
     [Authorize(Roles = "HR")]
     [HttpPost("rehire-eligibility")]
@@ -124,6 +139,8 @@ public class ExitController : ControllerBase
         var result = await _exitService.GetAllCompletedExitsAsync();
         return Ok(ApiResponse<List<ExitRequestSummaryDto>>.SuccessResponse(result));
     }
+
+    // ── Documents ─────────────────────────────────────────────────────────
 
     [Authorize(Roles = "HR")]
     [HttpGet("relieving-letter/{exitRequestId}")]
@@ -158,6 +175,8 @@ public class ExitController : ControllerBase
         return File(pdf, "application/pdf", "ClearanceCertificate.pdf");
     }
 
+    // ── Knowledge Transfer ────────────────────────────────────────────────
+
     [Authorize(Roles = "MANAGER")]
     [HttpPost("update-knowledge-transfer")]
     public async Task<IActionResult> UpdateKnowledgeTransfer(
@@ -183,6 +202,8 @@ public class ExitController : ControllerBase
         var tasks = await _exitService.GetKtTasksAsync(exitRequestId);
         return Ok(ApiResponse<List<KtTaskResponseDto>>.SuccessResponse(tasks));
     }
+
+    // ── All Requests ──────────────────────────────────────────────────────
 
     [Authorize(Roles = "HR,ADMIN,MANAGER,IT")]
     [HttpGet("all-requests")]

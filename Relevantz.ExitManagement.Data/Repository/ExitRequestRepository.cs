@@ -13,6 +13,8 @@ public class ExitRequestRepository : IExitRequestRepository
     public ExitRequestRepository(ExitManagementDbContext context)
         => _context = context;
 
+    // ── Unchanged methods ─────────────────────────────────────────────────
+
     public async Task AddAsync(ExitRequest exitRequest)
         => await _context.ExitRequests.AddAsync(exitRequest);
 
@@ -28,8 +30,8 @@ public class ExitRequestRepository : IExitRequestRepository
         => await _context.ExitApprovals
             .FirstOrDefaultAsync(a =>
                 a.ExitRequestId == exitRequestId &&
-                a.ApproverId == approverId &&
-                a.Status == ApprovalStatus.Pending);
+                a.ApproverId    == approverId    &&
+                a.Status        == ApprovalStatus.Pending);
 
     public async Task<ExitRequest?> GetExitRequestByIdAsync(int exitRequestId)
         => await _context.ExitRequests
@@ -45,7 +47,7 @@ public class ExitRequestRepository : IExitRequestRepository
         int exitRequestId, string departmentName)
         => await _context.ClearanceItems
             .FirstOrDefaultAsync(c =>
-                c.ExitRequestId == exitRequestId &&
+                c.ExitRequestId  == exitRequestId &&
                 c.DepartmentName == departmentName);
 
     public async Task<List<ClearanceItem>> GetClearanceItemsByExitIdAsync(int exitRequestId)
@@ -57,8 +59,8 @@ public class ExitRequestRepository : IExitRequestRepository
         => await _context.ExitRequests
             .AnyAsync(er =>
                 er.EmployeeId == employeeId &&
-                er.Status != ExitStatus.Completed &&
-                er.Status != ExitStatus.Rejected);
+                er.Status     != ExitStatus.Completed &&
+                er.Status     != ExitStatus.Rejected);
 
     public async Task<ExitRequest?> GetLatestExitRequestByEmployeeAsync(int employeeId)
         => await _context.ExitRequests
@@ -96,17 +98,19 @@ public class ExitRequestRepository : IExitRequestRepository
     }
 
     public async Task<Employee?> GetEmployeeByIdForDocumentAsync(int employeeId)
-    => await _context.Employees
-        .FirstOrDefaultAsync(e => e.Id == employeeId);
+        => await _context.Employees
+            .FirstOrDefaultAsync(e => e.Id == employeeId);
 
     public async Task<List<ExitRequest>> GetAllAsync(string? status)
     {
         var query = _context.ExitRequests
             .Include(e => e.Employee)
             .AsQueryable();
+
         if (!string.IsNullOrEmpty(status))
             if (Enum.TryParse<ExitStatus>(status, true, out var parsed))
                 query = query.Where(e => e.Status == parsed);
+
         return await query.OrderByDescending(e => e.SubmittedDate).ToListAsync();
     }
 
@@ -115,7 +119,6 @@ public class ExitRequestRepository : IExitRequestRepository
             .Include(e => e.Employee)
             .FirstOrDefaultAsync(e => e.Id == id);
 
-    // Approvals only (pending L1/L2)
     public async Task<List<ExitRequest>> GetPendingByManagerIdAsync(int managerId)
         => await _context.ExitRequests
             .Include(e => e.Employee)
@@ -127,7 +130,6 @@ public class ExitRequestRepository : IExitRequestRepository
             .OrderByDescending(e => e.SubmittedDate)
             .ToListAsync();
 
-    // Flaw 3 & 9: ALL active exits for KT dashboard — any status except Completed/Rejected
     public async Task<List<ExitRequest>> GetActiveExitsByManagerIdAsync(int managerId)
         => await _context.ExitRequests
             .Include(e => e.Employee)
@@ -139,7 +141,6 @@ public class ExitRequestRepository : IExitRequestRepository
             .OrderByDescending(e => e.SubmittedDate)
             .ToListAsync();
 
-    // Phase 1
     public async Task AddAssetDeclarationsAsync(List<AssetDeclaration> assets)
         => await _context.AssetDeclarations.AddRangeAsync(assets);
 
@@ -164,7 +165,6 @@ public class ExitRequestRepository : IExitRequestRepository
             .Where(c => c.ExitRequestId == exitRequestId && c.DepartmentName == dept)
             .ToListAsync();
 
-    // Flaw fixes
     public async Task<List<AssetDeclaration>> GetAssetsByExitIdAsync(int exitRequestId)
         => await _context.AssetDeclarations
             .Where(a => a.ExitRequestId == exitRequestId)
@@ -182,4 +182,16 @@ public class ExitRequestRepository : IExitRequestRepository
             .Where(e => e.Status == ExitStatus.Completed)
             .OrderByDescending(e => e.CompletedDate)
             .ToListAsync();
+
+    // ── NEW: Employee code lookup for handover buddy live search ──────────
+
+    /// <summary>
+    /// Looks up an active employee by their employee code (case-insensitive).
+    /// Used exclusively for the handover buddy live validation on the resignation form.
+    /// </summary>
+    public async Task<Employee?> GetEmployeeByCodeAsync(string employeeCode)
+        => await _context.Employees
+            .FirstOrDefaultAsync(e =>
+                e.EmployeeCode.ToUpper() == employeeCode.ToUpper() &&
+                e.IsActive);
 }
