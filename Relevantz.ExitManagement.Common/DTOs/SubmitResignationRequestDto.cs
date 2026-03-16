@@ -5,7 +5,6 @@ namespace Relevantz.ExitManagement.Common.DTOs;
 
 public class SubmitResignationRequestDto
 {
-    // ── Existing fields (unchanged) ───────────────────────────────────────
 
     [Required]
     public DateTime ProposedLastWorkingDate { get; set; }

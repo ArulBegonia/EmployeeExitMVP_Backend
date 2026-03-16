@@ -429,97 +429,154 @@ public class ExitService : IExitService
     }
 
     public async Task ManagerApproveAsync(int managerId, ManagerApprovalRequestDto request)
+{
+    var exitRequest = await _repository.GetExitRequestByIdAsync(request.ExitRequestId)
+        ?? throw new NotFoundException("Exit request not found.");
+ 
+    if (exitRequest.Status != ExitStatus.PendingL1Approval &&
+        exitRequest.Status != ExitStatus.PendingL2Approval)
+        throw new InvalidOperationException(
+            $"This request is not pending manager approval. Current status: {exitRequest.Status}");
+ 
+    var approval = await _repository.GetPendingApprovalAsync(
+        request.ExitRequestId, managerId)
+        ?? throw new NotFoundException(
+            "No pending approval found for this manager on this request.");
+ 
+    if (!request.IsApproved && string.IsNullOrWhiteSpace(request.Remarks))
+        throw new InvalidOperationException("Remarks are required when rejecting a resignation.");
+ 
+    if (!string.IsNullOrWhiteSpace(request.Remarks) && request.Remarks.Length > 1000)
+        throw new InvalidOperationException("Remarks must not exceed 1000 characters.");
+ 
+    // ── KT validation ──
+    if (request.IsApproved && request.KtTasks != null)
     {
-        var exitRequest = await _repository.GetExitRequestByIdAsync(request.ExitRequestId)
-            ?? throw new NotFoundException("Exit request not found.");
-
-        if (exitRequest.Status != ExitStatus.PendingL1Approval &&
-            exitRequest.Status != ExitStatus.PendingL2Approval)
+        if (request.KtTasks.Count > MAX_KT_TASKS)
             throw new InvalidOperationException(
-                $"This request is not pending manager approval. Current status: {exitRequest.Status}");
-
-        var approval = await _repository.GetPendingApprovalAsync(
-            request.ExitRequestId, managerId)
-            ?? throw new NotFoundException(
-                "No pending approval found for this manager on this request.");
-
-        if (!request.IsApproved && string.IsNullOrWhiteSpace(request.Remarks))
-            throw new InvalidOperationException("Remarks are required when rejecting a resignation.");
-
-        if (!string.IsNullOrWhiteSpace(request.Remarks) && request.Remarks.Length > 1000)
-            throw new InvalidOperationException("Remarks must not exceed 1000 characters.");
-
-        // KT validation
-        if (request.IsApproved && request.KtTasks != null)
+                $"Cannot assign more than {MAX_KT_TASKS} KT tasks at once.");
+ 
+        for (int i = 0; i < request.KtTasks.Count; i++)
         {
-            if (request.KtTasks.Count > MAX_KT_TASKS)
+            var task = request.KtTasks[i];
+ 
+            if (string.IsNullOrWhiteSpace(task.Title))
+                throw new InvalidOperationException($"KT task [{i + 1}]: Title is required.");
+ 
+            if (task.Title.Length > 200)
                 throw new InvalidOperationException(
-                    $"Cannot assign more than {MAX_KT_TASKS} KT tasks at once.");
-
-            for (int i = 0; i < request.KtTasks.Count; i++)
-            {
-                var task = request.KtTasks[i];
-
-                if (string.IsNullOrWhiteSpace(task.Title))
-                    throw new InvalidOperationException($"KT task [{i + 1}]: Title is required.");
-
-                if (task.Title.Length > 200)
-                    throw new InvalidOperationException(
-                        $"KT task [{i + 1}]: Title must not exceed 200 characters.");
-
-                if (task.Deadline == default)
-                    throw new InvalidOperationException(
-                        $"KT task [{i + 1}] '{task.Title}': Deadline is required.");
-
-                if (task.Deadline.Date < DateTime.UtcNow.Date)
-                    throw new InvalidOperationException(
-                        $"KT task [{i + 1}] '{task.Title}': Deadline cannot be in the past.");
-
-                // NEW VALIDATION
-                if (task.Deadline.Date > exitRequest.ProposedLastWorkingDate.Date)
-                    throw new InvalidOperationException(
-                        $"KT task [{i + 1}] '{task.Title}': Deadline must be on or before employee Last Working Day ({exitRequest.ProposedLastWorkingDate:dd MMM yyyy}).");
-
-                if (task.Deadline.Date > DateTime.UtcNow.AddYears(2).Date)
-                    throw new InvalidOperationException(
-                        $"KT task [{i + 1}] '{task.Title}': Deadline cannot exceed 2 years.");
-
-                if (!string.IsNullOrWhiteSpace(task.Description) &&
-                    task.Description.Length > 2000)
-                    throw new InvalidOperationException(
-                        $"KT task [{i + 1}] '{task.Title}': Description too long.");
-            }
-
-            var dupTitle = request.KtTasks
-                .GroupBy(t => t.Title.Trim().ToLower())
-                .FirstOrDefault(g => g.Count() > 1);
-
-            if (dupTitle != null)
+                    $"KT task [{i + 1}]: Title must not exceed 200 characters.");
+ 
+            if (task.Deadline == default)
                 throw new InvalidOperationException(
-                    $"Duplicate KT task title '{dupTitle.Key}'.");
+                    $"KT task [{i + 1}] '{task.Title}': Deadline is required.");
+ 
+            if (task.Deadline.Date < DateTime.UtcNow.Date)
+                throw new InvalidOperationException(
+                    $"KT task [{i + 1}] '{task.Title}': Deadline cannot be in the past.");
+ 
+            if (task.Deadline.Date > exitRequest.ProposedLastWorkingDate.Date)
+                throw new InvalidOperationException(
+                    $"KT task [{i + 1}] '{task.Title}': Deadline must be on or before employee Last Working Day ({exitRequest.ProposedLastWorkingDate:dd MMM yyyy}).");
+ 
+            if (task.Deadline.Date > DateTime.UtcNow.AddYears(2).Date)
+                throw new InvalidOperationException(
+                    $"KT task [{i + 1}] '{task.Title}': Deadline cannot exceed 2 years.");
+ 
+            if (!string.IsNullOrWhiteSpace(task.Description) &&
+                task.Description.Length > 2000)
+                throw new InvalidOperationException(
+                    $"KT task [{i + 1}] '{task.Title}': Description too long.");
         }
-
-        // Remaining logic unchanged
-        approval.Status = ApprovalStatus.Approved;
+ 
+        var dupTitle = request.KtTasks
+            .GroupBy(t => t.Title.Trim().ToLower())
+            .FirstOrDefault(g => g.Count() > 1);
+ 
+        if (dupTitle != null)
+            throw new InvalidOperationException(
+                $"Duplicate KT task title '{dupTitle.Key}'.");
+    }
+ 
+    // ── Handle rejection ──
+    if (!request.IsApproved)
+    {
+        approval.Status = ApprovalStatus.Rejected;
         approval.ActionDate = DateTime.UtcNow;
-
-        if (request.KtTasks?.Any() == true)
+ 
+        exitRequest.Status = ExitStatus.Rejected;
+ 
+        await SendNotificationAsync(exitRequest.EmployeeId,
+            "Resignation Rejected by Manager",
+            $"Your resignation request was rejected. Remarks: {request.Remarks}");
+ 
+        await _repository.AddAuditLogAsync(new AuditLog
         {
-            var tasks = request.KtTasks.Select(t => new KtTask
+            Action = $"Manager {managerId} rejected ExitRequest {request.ExitRequestId}",
+            PerformedBy = managerId.ToString(),
+            Timestamp = DateTime.UtcNow
+        });
+ 
+        await _repository.SaveChangesAsync();
+        return;
+    }
+ 
+    // ── Mark current approval approved ──
+    approval.Status = ApprovalStatus.Approved;
+    approval.ActionDate = DateTime.UtcNow;
+ 
+    // ── Save KT tasks if provided ──
+    if (request.KtTasks?.Any() == true)
+    {
+        var tasks = request.KtTasks.Select(t => new KtTask
+        {
+            ExitRequestId = exitRequest.Id,
+            Title = t.Title.Trim(),
+            Description = t.Description?.Trim(),
+            Deadline = t.Deadline,
+            CreatedAt = DateTime.UtcNow
+        }).ToList();
+ 
+        await _repository.AddKtTasksAsync(tasks);
+    }
+ 
+    // ── Move workflow forward ──
+    var employee = await _repository.GetEmployeeByIdAsync(exitRequest.EmployeeId)
+        ?? throw new NotFoundException("Employee not found.");
+ 
+    if (exitRequest.Status == ExitStatus.PendingL1Approval)
+    {
+        if (employee.L2ManagerId.HasValue)
+        {
+            exitRequest.Status = ExitStatus.PendingL2Approval;
+ 
+            await _repository.AddApprovalAsync(new ExitApproval
             {
                 ExitRequestId = exitRequest.Id,
-                Title = t.Title.Trim(),
-                Description = t.Description?.Trim(),
-                Deadline = t.Deadline,
-                CreatedAt = DateTime.UtcNow
-            }).ToList();
-
-            await _repository.AddKtTasksAsync(tasks);
+                ApproverId = employee.L2ManagerId.Value,
+                Status = ApprovalStatus.Pending
+            });
         }
-
-        await _repository.SaveChangesAsync();
+        else
+        {
+            exitRequest.Status = ExitStatus.PendingHrReview;
+        }
     }
-
+    else if (exitRequest.Status == ExitStatus.PendingL2Approval)
+    {
+        exitRequest.Status = ExitStatus.PendingHrReview;
+    }
+ 
+    await _repository.AddAuditLogAsync(new AuditLog
+    {
+        Action = $"Manager {managerId} approved ExitRequest {request.ExitRequestId}",
+        PerformedBy = managerId.ToString(),
+        Timestamp = DateTime.UtcNow
+    });
+ 
+    await _repository.SaveChangesAsync();
+}
+ 
     // ─────────────────────────────────────────────────────────────
     // Update Knowledge Transfer (UPDATED)
     // ─────────────────────────────────────────────────────────────
